@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_main_fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_stats">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_main_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add new Student"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_main_stats"
+        app:layout_constraintEnd_toStartOf="@+id/btn_main_stats"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_main_stats" />
+
+    <Button
+        android:id="@+id/btn_main_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show stats"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_main_add" />
+
+    <TextView
+        android:id="@+id/tv_main_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="There are 50 students in the list" />
+</androidx.constraintlayout.widget.ConstraintLayout>
