@@ -15,12 +15,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class AddStudentFragment extends Fragment {
 
-    StudentDataHolder dataHolder;
+    private StudentDataHolder dataHolder;
+
+    private EditText etName;
+    private EditText etFamily;
+    private EditText etAge;
 
     public AddStudentFragment(StudentDataHolder dataHolder) {
         this.dataHolder = dataHolder;
     }
 
+    private void clearInputFields() {
+        etName.setText("");
+        etFamily.setText("");
+        etAge.setText("");
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -32,11 +41,12 @@ public class AddStudentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_student, container, false);
 
-        EditText etName = view.findViewById(R.id.et_student_list_name);
-        EditText etFamily = view.findViewById(R.id.et_student_list_family);
-        EditText etAge = view.findViewById(R.id.et_student_list_age);
+        etName = view.findViewById(R.id.et_student_list_name);
+        etFamily = view.findViewById(R.id.et_student_list_family);
+        etAge = view.findViewById(R.id.et_student_list_age);
 
         Button btnAddStudent = view.findViewById(R.id.btn_student_list_add);
+        Button btnClearAll = view.findViewById(R.id.btn_student_list_clear_all);
 
         btnAddStudent.setOnClickListener(v -> {
             dataHolder.addStudent(
@@ -45,15 +55,16 @@ public class AddStudentFragment extends Fragment {
                     Integer.parseInt(etAge.getText().toString())
             );
 
-            etName.setText("");
-            etFamily.setText("");
-            etAge.setText("");
+            clearInputFields();
 
             Fragment currentFragment = getParentFragmentManager().findFragmentById(R.id.fl_main_fragment_container);
             FragmentTransaction removeTransaction = getParentFragmentManager().beginTransaction().remove(currentFragment);
             removeTransaction.commit();
         });
 
+        btnClearAll.setOnClickListener(v -> {
+            clearInputFields();
+        });
 
         return view;
     }

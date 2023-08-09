@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity implements StudentDataHolder
             addAddStudent.commit();
         });
 
+        Button btnShowStatsDialog = findViewById(R.id.btn_main_stats);
+        btnShowStatsDialog.setOnClickListener(v -> {
+            StatsDialog dialog = new StatsDialog(dataHolder.size());
+            dialog.setCancelable(false);
+            dialog.show(getSupportFragmentManager(), null);
+        });
+
     }
 
     @Override
